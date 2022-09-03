@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MMSAR</title>
+	<link rel="stylesheet" type="text/css" href="style4.css">
+  <link rel="shortcut icon" type="image/png" href="brain station logo.png">
+</head>
+<body>
+	<header>
+		<div class = "main">
+		<div class ="logo" >
+			<img src="brain station logo.png">
+		</div>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="1.html">Inspiration</a></li>
+			<li><a href="12.html">KG Converter</a></li>
+			<li><a href="Calculator.html">MMSAR</a></li>
+			<li><a href="Magic.html">Magic !</a></li>
+			
+		</ul>
+		
+	</div>
+	</header>
+	<br><br><br><br><br><br><br>
+	
+	<form class="maths" onkeyup="works()">
+        <div class="input">
+          <label>Input Series of Number</label>
+          <input type="text" />
+        </div>
+        <div>
+          <label>Max: </label>
+          <span class="max"> </span>
+        </div>
+        <div>
+          <label>Min: </label>
+          <span class="min"> </span>
+        </div>
+        <div>
+          <label>Sum: </label>
+          <span class="sum"></span>
+        </div>
+        <div>
+          <label>Average: </label>
+          <span class="average"> </span>
+        </div>
+        <div>
+          <label>Reverse Order: </label>
+          <span class="reverse"> </span>
+        </div>
+      </form>
+    </div>
+	
+
+
+	<script type="text/javascript">
+const input = document.querySelector("input");
+const mx = document.querySelector(".max");
+const mi = document.querySelector(".min");
+const s = document.querySelector(".sum");
+const avg = document.querySelector(".average");
+const rev = document.querySelector(".reverse");
+
+const works = () =>{
+    let a = input.value.split(",");
+    a = a.filter(Number);
+    console.log(a);
+    const max = a.reduce((a,b)=>{
+        return Math.max(parseInt(a),parseInt(b));
+    })
+    mx.innerHTML = max;
+    const min = a.reduce((a,b)=>{
+        return Math.min(parseInt(a),parseInt(b));
+    })
+    mi.innerHTML = min;
+    const sum = a.reduce((a, b)=>{
+        return parseInt(a)+parseInt(b);
+    })
+    s.innerHTML = sum;
+    const average = sum/a.length;
+    avg.innerHTML = average;
+    a.reverse();
+    a.toString();
+    rev.innerHTML = a;
+}
+
+</script>
+
+</body>
+<br><br><br>
+<footer>© Shihab Rumee Chowdhury 2022 
+
+</footer>
+</html>

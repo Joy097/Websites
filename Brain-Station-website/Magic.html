@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Magic !</title>
+	<link rel="stylesheet" type="text/css" href="style3.css">
+	<link rel="shortcut icon" type="image/png" href="brain station logo.png">
+	
+</head>
+<body>
+	<header>
+		<div class = "main">
+		<div class ="logo" >
+			<img src="brain station logo.png">
+		</div>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="1.html">Inspiration</a></li>
+			<li><a href="12.html">KG Converter</a></li>
+			<li><a href="Calculator.html">MMSAR</a></li>
+			<li><a href="Magic.html">Magic !</a></li>
+			
+		</ul>
+		
+	</div>
+	</header>
+	<br><br><br><br><br>
+
+	<h1>Magic !</h1>
+	<div class="magicbox">
+        <textarea cols="30" rows="10"></textarea>
+        <div class="buttons">
+          <button class="clr">Clear It</button>
+          <button class="cap">Capitalize</button>
+          <button class="srt">Sort</button>
+          <button class="rev">Reverse</button>
+          <button class="str">Strip Blank</button>
+          <button class="num">Add Numbers</button>
+          <button class="shf">Shuffle</button>
+        </div>
+      </div>
+    </div>
+	
+
+<script type="text/javascript">
+
+const clear = document.querySelector(".clr");
+const cap = document.querySelector(".cap");
+const sort = document.querySelector(".srt");
+const reverse = document.querySelector(".rev");
+const strip = document.querySelector(".str");
+const num = document.querySelector(".num");
+const shuffle = document.querySelector(".shf");
+
+const textarea = document.querySelector("textarea");
+
+clear.addEventListener("click",() => {
+textarea.value = "";
+})
+
+cap.addEventListener("click",()=>{
+    let f = textarea.value
+    if(f.toUpperCase() == f){
+        f = f.toLowerCase();
+    }
+    else{
+        f = f.toUpperCase()
+    }
+    textarea.value = f;
+})
+
+sort.addEventListener("click",()=>{
+  const text = textarea.value.trim();
+textarea.value = text.split("\n").sort().join("\n");
+})
+
+reverse.addEventListener("click",()=>{
+  const textLines = textarea.value.trim().split("\n");
+  let reversedlines = "";
+
+  textLines.forEach((textLine) => {
+    reversedlines += textLine.split("").reverse().join("") + "\n";
+  });
+
+  textarea.value = reversedlines;
+})
+
+strip.addEventListener("click",()=>{
+  const textLines = textarea.value.split("\n");
+  let strippedLines = "";
+  console.log(textLines);
+  textLines.forEach((textLine) => {
+    if (textLine === "") {
+      return;
+    }
+    strippedLines += textLine.trim() + "\n";
+  });
+
+  textarea.value = strippedLines;
+});
+
+num.addEventListener("click",()=>{
+  const textLines = textarea.value.trim().split("\n");
+  let numberAddedLines = "";
+
+  textLines.forEach((textLine, index) => {
+    numberAddedLines += `${index + 1})` + textLine + "\n";
+  });
+
+  textarea.value = numberAddedLines;
+});
+
+shuffle.addEventListener("click",()=>{
+  const textLines = textarea.value.trim().split("\n");
+  textarea.value = textLines.sort(() => Math.random() - 0.5).join("\n");
+});
+
+
+</script>
+
+</body>
+
+
+<footer>© Shihab Rumee Chowdhury 2022 
+
+</footer>
+
+</html>
