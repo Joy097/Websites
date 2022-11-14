@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+
+      <title>Finance Hub</title>
+      <link rel="stylesheet" href="cl.css">
+      
+      <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+   </head>
+   <body >
+
+   	<div class='parent'>
+          <div class='child' style="float: right;" ><h1><span class="high">Fin</span>ance Hub</h1></div>
+          <div class='child' id="menu" style="float: left;">
+          	         <label >
+          	         	<input type="checkbox" class="inp">
+          	         	<div class="toggle">
+          	         		<span class="top common"></span>
+          	         		<span class="mid common"></span>
+          	         		<span class="bottom common"></span>
+          	         	</div>
+   			         <div class="slide">
+   				     <h2 class = "h" >MENU</h2>
+   				     <ul >
+   					 <li><a href="home.html"> Home</a></li>
+   					 <li><a href="calc.html"> Calculator</a></li>
+   					 <li><a href="cr.html"> Crypto Currency</a></li>
+   					 <li><a href="cnv.html"> Currency Converter</a></li>
+   					 
+   				     </ul>
+   			         </div>
+   		             </label>
+          </div>
+     </div>
+
+
+      
+      
+
+<div class="container" >
+        <div class="coin-price">
+            <div class="logo"><img src="bit.png"></div>
+            <div>
+                <h1>Bitcoin = ৳<span id="bitcoin"></span></h1>
+            </div>
+        </div>
+        <div class="coin-price" >
+            <div class="logo"><img src="lt.png" ></div>
+            <div>
+                <h1>Litecoin = ৳<span id="litecoin"></span></h1>
+            </div>
+        </div>
+        <div class="coin-price">
+            <div class="logo"><img src="eth.png" ></div>
+            <div>
+                <h1>Ethereum = ৳<span id="ethereum"></span></h1>
+            </div>
+        </div>
+        <div class="coin-price">
+            <div class="logo"><img src="dg.png" ></div>
+            <div>
+                <h1>Dogecoin = ৳<span id="dogecoin"></span></h1>
+            </div>
+        </div>
+        <div class="coin-price" >
+            <div class="logo"><img src="tr.png" ></div>
+            <div>
+                <h1>Tron = ৳<span id="tron"></span></h1>
+            </div>
+        </div>
+        <div class="coin-price">
+            <div class="logo"><img src="te.png" ></div>
+            <div>
+                <h1>Tether = ৳<span id="tether"></span></h1>
+            </div>
+        </div>
+        <div class="coin-price">
+            <div class="logo"><img src="so.png" ></div>
+            <div>
+                <h1>Solana = ৳<span id="solana"></span></h1>
+            </div>
+        </div>
+        <div class="coin-price">
+            <div class="logo"><img src="bnb.png" ></div>
+            <div>
+                <h1>BNBBACK = ৳<span id="bnb"></span></h1>
+            </div>
+        </div>
+      
+
+    </div>
+
+<br><br><br><br><br>
+<h1 style=" font-size: 30px;">700+ Cryptocurrency Prices in dollar :</h1>
+<br>
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+  {
+  "width": "100%",
+  "height": "150%",
+  "defaultColumn": "overview",
+  "screener_type": "crypto_mkt",
+  "displayCurrency": "USD",
+  "colorTheme": "dark",
+  "locale": "en",
+  "isTransparent": true
+}
+  </script>
+</div>
+
+
+
+<style type="text/css">
+  
+.container{
+    justify-content: center;
+    align-items: center;
+
+}
+.container .coin-price{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px #ccc;
+    margin: 7px;
+
+}
+
+.container .coin-price .logo{
+    width: 70px;
+    margin-right: 10px;
+}
+.container .coin-price .logo img{
+    width: 100%;
+}
+.container .coin-price div{
+    display: block;
+}
+.container .coin-price div h1{
+    font-size: 20px;
+}
+
+
+</style>
+<script type="text/javascript">
+  
+
+var btc = document.getElementById("bitcoin");
+var ltc = document.getElementById("litecoin");
+var eth = document.getElementById("ethereum");
+var doge = document.getElementById("dogecoin");
+var tr = document.getElementById("tron");
+var tet = document.getElementById("tether");
+var sol = document.getElementById("solana");
+var bnb = document.getElementById("bnb");
+
+var liveprice = {
+    "async": true,
+    "scroosDomain": true,
+    "url": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Clitecoin%2Cethereum%2Cdogecoin%2Ctron%2Ctether%2Csolana%2Cbnbback&vs_currencies=bdt",
+
+    "method": "GET",
+    "headers": {}
+}
+
+$.ajax(liveprice).done(function (response){
+    btc.innerHTML = response.bitcoin.bdt;
+    ltc.innerHTML = response.litecoin.bdt;
+    eth.innerHTML = response.ethereum.bdt;
+    doge.innerHTML = response.dogecoin.bdt;
+    tr.innerHTML = response.tron.bdt;
+    tet.innerHTML = response.tether.bdt;
+    sol.innerHTML = response.solana.bdt;
+    bnb.innerHTML = response.bnbback.bdt;
+
+});
+
+
+</script>
+      
+   </body>
+   </br></br></br></br></br></br></br></br></br></br></br></br></br></br>  </br></br></br></br></br></br></br></br></br></br>
+   <footer class="footer">
+    <div class="waves">
+      <div class="wave" id="wave1"></div>
+      <div class="wave" id="wave2"></div>
+      <div class="wave" id="wave3"></div>
+      <div class="wave" id="wave4"></div>
+    </div>
+    <ul class="social-icon">
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+    </ul>
+    
+    <p>&copy;2022 Finance Hub | All Rights Reserved</p>
+  </footer>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</html>

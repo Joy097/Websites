@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Finance Hub</title>
+      <link rel="stylesheet" href="cl.css">
+   </head>
+   <body >
+
+   	<div class='parent'>
+          <div class='child' style="float: right;" ><h1><span class="high">Fin</span>ance Hub</h1></div>
+          <div class='child' id="menu" style="float: left;">
+          	         <label >
+          	         	<input type="checkbox" class="inp">
+          	         	<div class="toggle">
+          	         		<span class="top common"></span>
+          	         		<span class="mid common"></span>
+          	         		<span class="bottom common"></span>
+          	         	</div>
+   			         <div class="slide">
+   				     <h2 class = "h" >MENU</h2>
+   				     <ul >
+   					 <li><a href="home.html"> Home</a></li>
+   					 <li><a href="calc.html"> Calculator</a></li>
+   					 <li><a href="cr.html"> Crypto Currency</a></li>
+   					 <li><a href="cnv.html"> Currency Converter</a></li>
+   					 
+   				     </ul>
+   			         </div>
+   		             </label>
+          </div>
+     </div>
+
+
+      <div class="wrapper" style="width: 100%; float: left;">
+         <div class="display">
+            <div id="time"></div>
+         </div>
+         <span></span>
+         <span></span>
+      </div>
+      <section class="times" style="color: white; float: left;">
+      	<div data-timezone="America/New_York">
+      		<h2 >NEWYORK</h2>
+      		<output>00:00:00</output>
+      	</div>
+
+      	<div data-timezone = "Europe/London">
+      		<h2 >LONDON</h2>
+      		<output>00:00:00</output>
+      	</div>
+
+      	<div data-timezone = "America/Toronto">
+      		<h2 >Toronto</h2>
+      		<output>00:00:00</output>
+      	</div>
+
+      	<div data-timezone = "Australia/Sydney">
+      		<h2 >Sydney</h2>
+      		<output>00:00:00</output>
+      	</div>
+
+      	<div data-timezone = "Asia/Shanghai">
+      		<h2 >Shanghai</h2>
+      		<output>00:00:00</output>
+      	</div>
+      	<div data-timezone = "Asia/Tokyo">
+      		<h2 >Tokyo</h2>
+      		<output>00:00:00</output>
+      	</div>
+      	<div data-timezone="Asia/Singapore">
+      		<h2 >Singapore</h2>
+      		<output>00:00:00</output>
+      	</div>
+      </section>
+      <script>
+         setInterval(()=>{
+           const time = document.querySelector(".display #time");
+           let date = new Date();
+           let hours = date.getHours();
+           let minutes = date.getMinutes();
+           let seconds = date.getSeconds();
+           let day_night = "AM";
+           if(hours > 12){
+             day_night = "PM";
+             hours = hours - 12;
+           }
+           if(seconds < 10){
+             seconds = "0" + seconds;
+           }
+           if(minutes < 10){
+             minutes = "0" + minutes;
+           }
+           if(hours < 10){
+             hours = "0" + hours;
+           }
+           time.textContent = hours + ":" + minutes + ":" + seconds + " "+ day_night;
+         });
+      </script>
+      <script src="https://moment.github.io/luxon/global/luxon.min.js"></script>
+      <script type="text/javascript">
+      	const locations = document.querySelectorAll("section.times div")
+
+      	
+
+      	const updateTimes = function (){
+      		locations.forEach(location => {
+      		const output = location.querySelector("output")
+      		const time1 = location.getAttribute("data-timezone")
+      		const now = luxon.DateTime.now().setZone(time1)
+      		output.innerHTML = now.toFormat("HH:mm:ss")
+
+      		const hr = parseInt(now.toFormat("H"))
+
+      		if(hr>=9 && hr<18){
+      			location.classList.add("open")
+      		}
+      	})
+      	}
+
+      	updateTimes()
+      	setInterval(function(){
+      		updateTimes()
+      	},1000)
+      </script>
+   </body>
+   </br></br></br></br></br></br></br>
+   <footer class="footer">
+    <div class="waves">
+      <div class="wave" id="wave1"></div>
+      <div class="wave" id="wave2"></div>
+      <div class="wave" id="wave3"></div>
+      <div class="wave" id="wave4"></div>
+    </div>
+    <ul class="social-icon">
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+    </ul>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
+    <p>&copy;2022 Finance Hub | All Rights Reserved</p>
+  </footer>
+</html>
